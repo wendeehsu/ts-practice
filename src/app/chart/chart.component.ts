@@ -65,8 +65,6 @@ export class ChartComponent {
     }
   };
 
-  // public lineChartType: ChartType = 'line';
-
   getLineData() {
     let dataset: ChartDataset[] = [];
     let weight_list: string[] = ["-0","-0.1","-0.5","-1","+1","+0.5","+0.1","+0"];
@@ -89,9 +87,6 @@ export class ChartComponent {
     return dataset.concat(this.getStatsData());
   }
 
-  // skipped = (ctx, value) => ctx.p0.skip || ctx.p1.skip ? value : undefined;
-  // down = (ctx, value) => ctx.p0.parsed.y > ctx.p1.parsed.y ? value : undefined;
-
   getStatsData() {
     let raw_data: ColorPatch[]  = [{'color': 'A1', 'ref': {'cct': 4168, 'radius': 568}, 'new': {'cct': 4301, 'radius': 571}}, {'color': 'A2', 'ref': {'cct': 2410, 'radius': 41}, 'new': {'cct': 2283, 'radius': 147}}, {'color': 'A3', 'ref': {'cct': 9410, 'radius': -1026}, 'new': {'cct': 9693, 'radius': -894}}, {'color': 'A4', 'ref': {'cct': 5967, 'radius': -328}, 'new': {'cct': 6067, 'radius': -328}}, {'color': 'B1', 'ref': {'cct': 4324, 'radius': 528}, 'new': {'cct': 4446, 'radius': 569}}, {'color': 'B2', 'ref': {'cct': 8798, 'radius': -839}, 'new': {'cct': 8925, 'radius': -659}}, {'color': 'B3', 'ref': {'cct': 4080, 'radius': -1933}, 'new': {'cct': 4081, 'radius': -2081}}, {'color': 'B4', 'ref': {'cct': 6038, 'radius': -342}, 'new': {'cct': 6121, 'radius': -266}}, {'color': 'C1', 'ref': {'cct': 7835, 'radius': -685}, 'new': {'cct': 7867, 'radius': -596}}, {'color': 'C2', 'ref': {'cct': 2299, 'radius': 2576}, 'new': {'cct': 2181, 'radius': 2576}}, {'color': 'C3', 'ref': {'cct': 1934, 'radius': 2971}, 'new': {'cct': 1844, 'radius': 3005}}, {'color': 'C4', 'ref': {'cct': 6087, 'radius': -344}, 'new': {'cct': 6215, 'radius': -245}}, {'color': 'D1', 'ref': {'cct': 4081, 'radius': -985}, 'new': {'cct': 4082, 'radius': -1085}}, {'color': 'D2', 'ref': {'cct': 8042, 'radius': 1411}, 'new': {'cct': 8072, 'radius': 1726}}, {'color': 'D3', 'ref': {'cct': 4049, 'radius': -1400}, 'new': {'cct': 4030, 'radius': -1154}}, {'color': 'D4', 'ref': {'cct': 6016, 'radius': -290}, 'new': {'cct': 6154, 'radius': -228}}, {'color': 'E1', 'ref': {'cct': 7851, 'radius': -39}, 'new': {'cct': 7891, 'radius': 165}}, {'color': 'E2', 'ref': {'cct': 4089, 'radius': -1171}, 'new': {'cct': 4092, 'radius': -1112}}, {'color': 'E3', 'ref': {'cct': 5523, 'radius': 4077}, 'new': {'cct': 5171, 'radius': 4339}}, {'color': 'E4', 'ref': {'cct': 6089, 'radius': -267}, 'new': {'cct': 6277, 'radius': -246}}, {'color': 'F1', 'ref': {'cct': 6857, 'radius': -1379}, 'new': {'cct': 7183, 'radius': -1361}}, {'color': 'F2', 'ref': {'cct': 2918, 'radius': -955}, 'new': {'cct': 2842, 'radius': -749}}, {'color': 'F3', 'ref': {'cct': 7930, 'radius': -1714}, 'new': {'cct': 8077, 'radius': -1838}}, {'color': 'F4', 'ref': {'cct': 6179, 'radius': -170}, 'new': {'cct': 6308, 'radius': -214}}];
     let points = raw_data.map(color => [{x: color['ref']['cct'], y: color['ref']['radius'], device: 'ref'}, {x: color['new']['cct'], y: color['new']['radius'], device: 'new'}]).flat();
@@ -102,9 +97,8 @@ export class ChartComponent {
       data: points,
       segment: {
         borderColor: (ctx) => (points[ctx.p0DataIndex].device == 'ref' ?  'rgb(0,0,0,0.2)' : 'transparent'),
-        // borderDash: ctx => skipped(ctx, [6, 6]),
-      }
-      // colors: [''].concat(raw_data.map(i => ['black', 'transparant']).flat())
+      },
+      pointBackgroundColor: (ctx) => (points[ctx.dataIndex].device == 'ref' ? 'red': 'blue'),
     }];
 
     return dataset;

@@ -16,9 +16,15 @@ interface Pokemon {
 export class AppComponent {
   favoriteAnimal: string = "cat";
   pokemonName: string = "pikachu";
+  changeMethod: boolean = true;
 
   constructor() {
 
+  }
+
+  toggleUseRatio(e: any) {
+    this.changeMethod = !this.changeMethod;
+    console.log(this.changeMethod);
   }
 
   handleClick(value: any) {

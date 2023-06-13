@@ -29,3 +29,13 @@
 
 <pokemon-list></pokemon-list>
 <app-chart></app-chart>
+<input type="radio" 
+       name="useRatio"
+      [value]="true"
+      [ngModel]="changeMethod"
+      (ngModelChange)="toggleUseRatio($event)" /> Ratio
+<input type="radio" 
+      name="useRatio"
+     [value]="false"
+     [ngModel]="changeMethod"
+     (ngModelChange)="toggleUseRatio($event)" /> Offset
