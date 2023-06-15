@@ -1,0 +1,55 @@
+<form #form="ngForm" (ngSubmit)="handleSubmit(form)">
+  Pokemon name:
+  <input type="text" [(ngModel)]="myName" name="name" required />
+  <input type="radio" 
+       name="useRatio"
+      [value]="true"
+      [ngModel]="changeMethod"
+      (ngModelChange)="toggleUseRatio($event)" /> Ratio
+  <input type="radio" 
+        name="useRatio"
+      [value]="false"
+      [ngModel]="changeMethod"
+      (ngModelChange)="toggleUseRatio($event)" /> Offset
+  <input type="checkbox"
+        name="patch1"
+        [ngModel]="changeMethod"/> useRatio? {{changeMethod}}
+
+  <select [ngModel]="bv_list"
+          style="width: 100px;"
+          (ngModelChange)="handleSelect($event)">
+    <option *ngFor="let bv of bv_list"
+            [value]="bv"
+            [selected]="bv == 1000"
+            >{{bv}}</option>
+  </select>
+  <button type="submit">Submit!</button>
+</form>
+
+<h2>Two-way binding example</h2>
+<input [(ngModel)]="favoriteAnimal" />
+<p>{{favoriteAnimal}}</p>
+
+<input type="text" #pokemonName />
+<button (click)="handleClick(pokemonName.value)">Click!</button>
+
+<table>
+  <thead>
+    <th>Index</th>
+    <th>Name</th>
+    <th>Type</th>
+  </thead>
+  <tbody>
+    <tr *ngFor="let pokemon of pokemons; let i = index">
+      <td [class.cool-bool]="pokemon.isCool">{{pokemon.id}}</td>
+      <td>{{pokemon.name}}</td>
+      <td>{{pokemon.type}}</td>
+    </tr>
+
+    <tr *ngFor="let pokemon of pokemons; let i = index">
+      <td [ngClass]="(pokemon.isCool ? 'cool-bool': 'cool-false')">{{pokemon.id}}</td>
+      <td>{{pokemon.name}}</td>
+      <td>{{pokemon.type}}</td>
+    </tr>
+  </tbody>
+</table>

@@ -1,41 +1,10 @@
+<div>
+  <a *ngFor="let n of nav"
+      [routerLink]="n.link"
+      routerLinkActive="active"
+      [routerLinkActiveOptions]="{ exact: n.exact }">
+    {{ n.name }}
+  </a>
+</div>
+
 <router-outlet></router-outlet>
-<h2>Two-way binding example</h2>
-<input [(ngModel)]="favoriteAnimal" />
-<p>{{favoriteAnimal}}</p>
-
-<input type="text" #pokemonName />
-<button (click)="handleClick(pokemonName.value)">Click!</button>
-
-<table>
-  <thead>
-    <th>Index</th>
-    <th>Name</th>
-    <th>Type</th>
-  </thead>
-  <tbody>
-    <tr *ngFor="let pokemon of pokemons; let i = index">
-      <td [class.cool-bool]="pokemon.isCool">{{pokemon.id}}</td>
-      <td>{{pokemon.name}}</td>
-      <td>{{pokemon.type}}</td>
-    </tr>
-
-    <tr *ngFor="let pokemon of pokemons; let i = index">
-      <td [ngClass]="(pokemon.isCool ? 'cool-bool': 'cool-false')">{{pokemon.id}}</td>
-      <td>{{pokemon.name}}</td>
-      <td>{{pokemon.type}}</td>
-    </tr>
-  </tbody>
-</table>
-
-<pokemon-list></pokemon-list>
-<app-chart></app-chart>
-<input type="radio" 
-       name="useRatio"
-      [value]="true"
-      [ngModel]="changeMethod"
-      (ngModelChange)="toggleUseRatio($event)" /> Ratio
-<input type="radio" 
-      name="useRatio"
-     [value]="false"
-     [ngModel]="changeMethod"
-     (ngModelChange)="toggleUseRatio($event)" /> Offset

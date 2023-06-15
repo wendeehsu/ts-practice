@@ -5,3 +5,17 @@
 .cool-false {
     background-color: pink;
 }
+
+.active {
+    color: orchid;
+    text-decoration:underline;
+}
+
+a {
+    text-decoration: none;
+    margin: 10px;
+}
+
+a:hover {
+    color: pink;
+}

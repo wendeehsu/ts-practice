@@ -49,6 +49,15 @@ export class ChartComponent {
       mode: 'dataset',
       // intersect: true
     },
+    interaction: {
+      mode: 'point',
+    },
+    // events: ['click'],
+    onClick: (e, elements) => {
+      console.log("clicked!");
+      console.log(e);
+      console.log(elements);
+  },
     plugins: {
       legend: { display: true },
       annotation: {

@@ -1,0 +1,24 @@
+<div>
+  <p>basic: {{ hasBasicJson }}</p>
+  <p>advance: {{ hasAdvanceJson }}</p>
+  <p>feature: {{ hasFeatureJson }}</p>
+
+  <ngx-dropzone (change)="onSelect($event)">
+    <ngx-dropzone-label>Drop files here</ngx-dropzone-label>
+    <ngx-dropzone-preview *ngFor="let f of files" [removable]="true" (removed)="onRemove(f)">
+      <ngx-dropzone-label>{{ f.name }}</ngx-dropzone-label>
+    </ngx-dropzone-preview>
+  </ngx-dropzone>
+</div>
+<div>
+  <p>upload ref and new images</p>
+  <div>
+    <p>ref</p>
+    <ngx-dropzone (change)="onSelectFiles($event, 'ref')">
+      <ngx-dropzone-label>Drop files here</ngx-dropzone-label>
+      <ngx-dropzone-preview *ngFor="let f of refFiles" [removable]="true" (removed)="onRemove(f)">
+        <ngx-dropzone-label>{{ f.name }}</ngx-dropzone-label>
+      </ngx-dropzone-preview>
+    </ngx-dropzone>
+  </div>
+</div>

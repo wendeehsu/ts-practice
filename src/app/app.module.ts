@@ -7,18 +7,28 @@ import { FormsModule } from '@angular/forms';
 import { PokemonBaseModule } from './pokemon-base/pokemon-base.module';
 import { ChartComponent } from './chart/chart.component';
 import { NgChartsModule } from 'ng2-charts';
+import { FileUploadComponent } from './file-upload/file-upload.component';
+import { NgxDropzoneModule } from 'ngx-dropzone';
+import { HomeComponent } from './home/home.component';
+import { NotfoundComponent } from './notfound/notfound.component';
+import { PracticeComponent } from './practice/practice.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ChartComponent
+    ChartComponent,
+    FileUploadComponent,
+    HomeComponent,
+    NotfoundComponent,
+    PracticeComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     PokemonBaseModule,
-    NgChartsModule
+    NgChartsModule,
+    NgxDropzoneModule
   ],
   providers: [],
   bootstrap: [AppComponent]
