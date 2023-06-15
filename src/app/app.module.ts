@@ -11,7 +11,6 @@ import { FileUploadComponent } from './file-upload/file-upload.component';
 import { NgxDropzoneModule } from 'ngx-dropzone';
 import { HomeComponent } from './home/home.component';
 import { NotfoundComponent } from './notfound/notfound.component';
-import { PracticeComponent } from './practice/practice.component';
 
 @NgModule({
   declarations: [
@@ -19,8 +18,7 @@ import { PracticeComponent } from './practice/practice.component';
     ChartComponent,
     FileUploadComponent,
     HomeComponent,
-    NotfoundComponent,
-    PracticeComponent
+    NotfoundComponent
   ],
   imports: [
     BrowserModule,

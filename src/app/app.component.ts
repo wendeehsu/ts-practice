@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { FormsModule } from '@angular/forms';
 
 interface Nav {
   link: string,
@@ -20,8 +19,13 @@ export class AppComponent {
       exact: true
     },
     {
-      link: "/badroute",
-      name: "practice",
+      link: "/pokemon",
+      name: "pokemon",
+      exact: true
+    },
+    {
+      link: "/badLink",
+      name: "badLink",
       exact: true
     }
   ];
