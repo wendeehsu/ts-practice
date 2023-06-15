@@ -37,8 +37,36 @@ export class FileUploadComponent implements OnInit {
   }
 
   onSelectFiles(event: any, src: string) {
-    // read log file and parse cct/ bv
-    // send stats and color checker image to backend
+    console.log(event);
+    console.log(src);
+    let file: File = event.addedFiles[0];
+    let fileReader: FileReader = new FileReader();
+    let bv_search_term: string = "brightness_value=";
+    let cct_search_term: string = "cct="; 
+    let bv: number | null;
+    let cct: number | null;
+    fileReader.onload = () => {
+      console.log("file reader onload!");
+      let text = fileReader.result;
+      if (text != null) {
+        text = text.toString();
+        let targetIndex: number = text.indexOf(bv_search_term);
+        let targetString: string[] = text.substring(targetIndex-12, targetIndex+25).split(' ');
+        targetString.forEach(str => {
+          if (str.includes(cct_search_term)) {
+            cct = parseInt(str.substring(str.indexOf(cct_search_term)+ cct_search_term.length));
+          }
+          else if (str.includes(bv_search_term)) {
+            bv = parseInt(str.substring(str.indexOf(bv_search_term)+ bv_search_term.length));
+          }
+        });
+
+      }
+      console.log("bv:", bv);
+      console.log("cct:", cct);
+    }
+
+    fileReader.readAsText(file);
   }
 
   onRemove(event: any) {
